@@ -97,6 +97,15 @@ public class MyHashTable <K,V> {
         }
         return null;
     }
+    public int getChainLength(int index) {
+        int count = 0;
+        HashNode<K, V> current = chainArray[index];
+        while (current != null) {
+            count++;
+            current = current.next;
+        }
+        return count;
+    }
 
 }
 
