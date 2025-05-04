@@ -1,21 +1,18 @@
-import java.util.Random;
-
 public class Main {
     public static void main(String[] args) {
-        MyHashTable<MyTestingClass, String> table = new MyHashTable<>(50); // 50 бакетов
-        Random rand = new Random();
+        BST<Integer, String> tree = new BST<>();
+        tree.put(5, "five");
+        tree.put(3, "three");
+        tree.put(10, "ten");
+        tree.put(1, "one");
 
-        for (int i = 0; i < 10000; i++) {
-            int id = rand.nextInt(100000);
-            String name = "name" + rand.nextInt(1000);
-            MyTestingClass key = new MyTestingClass(id, name);
-            table.put(key, "value" + i);
+        for (var elem : tree) {
+            System.out.println("key is " + elem.getKey() + " and value is " + elem.getValue());
         }
 
-        // Печать количества элементов в каждом бакете
-        for (int i = 0; i < 50; i++) {
-            System.out.println("Bucket " + i + ": " + table.getChainLength(i) + " elements");
-        }
-
+        System.out.println(tree.size());
+        tree.delete(3);
+        System.out.println(tree.size());
     }
 }
+
